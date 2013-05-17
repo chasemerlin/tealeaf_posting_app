@@ -1,5 +1,5 @@
 Postit::Application.routes.draw do
-  resources :posts
+  resources :posts, except: [:destroy]
 
   root to: 'posts#index'
 end

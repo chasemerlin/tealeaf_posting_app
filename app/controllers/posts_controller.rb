@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
+  	@post = Post.new
   end
 
   def create
@@ -17,8 +18,7 @@ class PostsController < ApplicationController
   		flash[:notice] = "Post was created!"
   		redirect_to post_path(@post)
   	else
-  		flash[:notice] = "Invalid Post :("
-  		redirect_to new_post_path
+  		render :new
   	end
   end
 
@@ -27,6 +27,13 @@ class PostsController < ApplicationController
   end
 
   def update
+  	@post = Post.find(params[:id])
+  	if @post.update_attributes(params[:post])
+  		flash[:notice] = "Post Updated!"
+  		redirect_to post_path(@post)
+  	else
+  		render 'edit'
+  	end
   end
 
   def destroy

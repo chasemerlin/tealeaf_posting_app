@@ -1,9 +1,9 @@
-<h3>Posts</h5>
+<h3 class="page-header">Posts</h5>
 <% @posts.each do |post| %>
 	<div class="well">
 		<h4><%= post.title %></h4>
-		<h4><%= post.user.name %></h4>
-		<h4><%= post.url %></h4>
-		<h4><%= post.title %></h4>
+		<h4 class="text-info"><%= post.user.name %></h4>
+		<p class="quiet"><%= post.description %></p>
+		<small><%= post.url %></small>
 	</div>
 <% end %>
