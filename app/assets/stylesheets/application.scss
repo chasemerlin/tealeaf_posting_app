@@ -12,11 +12,16 @@
  *= require_tree .
  */
 
+
 @import 'bootstrap';
 @import "bootstrap-responsive";
 
 .container {
-  margin-left: 135px
+  
+}
+
+.navbar-inner {
+  padding-left: 84px;
 }
 
 .navbar .nav > li > a.brand {

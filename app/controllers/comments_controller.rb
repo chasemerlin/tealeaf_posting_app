@@ -8,8 +8,14 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = Comment.create(post_id: params[:post_id], body: params[:body])
-		redirect_to posts_path
+		@comment = Comment.new(post_id: params[:post_id], body: params[:body])
+		if @comment.save
+			flash[:notice] = "Added a New Comment!"
+			redirect_to posts_path
+		else
+			flash[:error] = "Invalid Comment"
+			redirect_to post_path(Post.find(params[:post_id]))
+		end
 	end
 
 	def edit
@@ -17,7 +23,6 @@ class CommentsController < ApplicationController
 	end
 
 	def update
-		binding.pry
 		@comment = Comment.find(params[:id])
 		if @comment.update_attributes(body: params[:body])
 			flash[:notice] = "You Changed Your Comment!"

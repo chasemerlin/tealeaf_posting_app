@@ -7,16 +7,16 @@
 		<p class="quiet"><%= @post.description %></p>
 		<%= link_to "#{@post.url}", "http://#{@post.url}" %>
 </div>
-<div class="well">
-		<% @post.comments.each do |comment| %>
+<% @post.comments.each do |comment| %>
+	<div class="well">		
 			<p class="comments-list">
 				<small><%= comment.body %></small>
 				<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
 				<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
 			</p>
-			<hr>
-		<% end %>
-</div>
+	</div>
+<% end %>
+
 <%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal" do %>
 	<%= label_tag(:body, "Comment") %>
 	<%= text_area_tag(:body) %>
