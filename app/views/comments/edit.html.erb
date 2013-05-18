@@ -1,0 +1,6 @@
+<div class="well"><%= @comment.body %></div>
+<%= form_tag "/posts/#{params[:post_id]}/comments/#{params[:id]}", method: "put", class:"form-horizontal" do %>
+	<%= label_tag(:body, "Edit Comment") %>
+	<%= text_area_tag(:body) %>
+	<%= submit_tag("Edit Post", class:"btn btn-primary") %>
+<% end %>

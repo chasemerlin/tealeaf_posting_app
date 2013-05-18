@@ -1,9 +1,9 @@
 <h3 class="page-header">Posts</h5>
 <% @posts.each do |post| %>
-	<div class="well">
-		<h4><%= post.title %></h4>
-		<h4 class="text-info"><%= post.user.name %></h4>
+	<div class="well post-header">
+		<h4><%= post.title %> <span class="quiet"> by </span><span class="text-info"><%= post.user.name %></span></h4>
 		<p class="quiet"><%= post.description %></p>
-		<small><%= post.url %></small>
+		<%= link_to "#{post.url}", "http://#{post.url}" %>
+		<small><%= link_to "#{post.comments.count} comments", post_path(post) %></small>
 	</div>
 <% end %>

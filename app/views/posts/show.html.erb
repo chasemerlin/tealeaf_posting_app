@@ -1,5 +1,25 @@
-<div class="well">
-	<h3>Title: <%= @post.title %></h3>
-	<h3>URL: <%= @post.url %></h3>
-	<h3>Description: <%= @post.description %></h3>
+<div class="well post-header">
+		<h4>
+			<span class="title"><%= @post.title %></span>
+			<span class="quiet"> by </span>
+			<span class="text-info"><%= @post.user.name %></span>
+		</h4>
+		<p class="quiet"><%= @post.description %></p>
+		<%= link_to "#{@post.url}", "http://#{@post.url}" %>
 </div>
+<div class="well">
+		<% @post.comments.each do |comment| %>
+			<p class="comments-list">
+				<small><%= comment.body %></small>
+				<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
+				<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
+			</p>
+			<hr>
+		<% end %>
+</div>
+<%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal" do %>
+	<%= label_tag(:body, "Comment") %>
+	<%= text_area_tag(:body) %>
+	<%= submit_tag("New Comment", class:"btn btn-primary") %>
+<% end %>
+

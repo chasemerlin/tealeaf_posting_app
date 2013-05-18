@@ -43,3 +43,20 @@ div.comment_votes {
   padding: 10px;
 }
 
+.post-header a {
+  display: block;
+  width: 7%;
+  padding-left: 3px;
+  margin-top: 10px;
+}
+
+.comments-list a {
+  display: none;
+}
+
+.comments-list:hover a {
+  display:inline;
+} 
+
+
+
