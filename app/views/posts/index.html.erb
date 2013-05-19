@@ -1,9 +1,27 @@
-<h3 class="page-header">Posts</h5>
+<div class="page-header my-header">
+	<h3>Posts</h3>
+	<ul>
+	<% Category.all.each do |category| %>
+		<li><a class="btn btn-small btn-success"><%= category.name %></a></li>
+	<% end %>
+	</ul>
+</div>
+
 <% @posts.each do |post| %>
 	<div class="well post-header">
-		<h4><%= post.title %> <span class="quiet"> by </span><span class="text-info"><%= post.user.name %></span></h4>
+		<ul>
+			<% post.categories.each do |category| %>
+				<li><a class="btn btn-mini btn-success"><%= category.name %></a></li>
+			<% end %>
+		</ul>
+		<h4>
+			<%= post.title %> 
+			<small class="quiet"> by </small>
+			<span class="text-info"><%= post.user.name %><%= image_tag avatar_url_small(post.user) %></span>
+			<small class="quiet"><%= time_ago_in_words(post.created_at) %> ago </small>
+		</h4>
 		<p class="quiet"><%= post.description %></p>
-		<%= link_to "#{post.url}", "http://#{post.url}" %>
-		<small><%= link_to "#{post.comments.count} comments", post_path(post) %></small>
+		<%= link_to "#{post.url}", "http://#{post.url}", class: "no-hover" %>
+		<small><%= link_to "#{post.comments.count} comments", post_path(post), class: "no-hover" %></small>
 	</div>
 <% end %>

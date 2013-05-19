@@ -1,8 +1,14 @@
 <div class="well post-header">
+		<ul>
+			<% @post.categories.each do |category| %>
+				<li><a class="btn btn-mini btn-success"><%= category.name %></a></li>
+			<% end %>
+		</ul>
 		<h4>
 			<span class="title"><%= @post.title %></span>
-			<span class="quiet"> by </span>
+			<small class="quiet"> by </small>
 			<span class="text-info"><%= @post.user.name %></span>
+			<small class="quiet"><%= time_ago_in_words(@post.created_at) %> ago</small>
 		</h4>
 		<p class="quiet"><%= @post.description %></p>
 		<%= link_to "#{@post.url}", "http://#{@post.url}" %>

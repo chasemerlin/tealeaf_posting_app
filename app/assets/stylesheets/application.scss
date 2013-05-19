@@ -26,8 +26,9 @@ $baseFontSize: 18px;
   padding-left: 84px;
 }
 
-.navbar-inner .nav li a, .navbar-inner a.brand {
+.navbar-inner .nav li a {
   color: #4099ff;
+   border-radius: 5px;
 }
 
 .navbar-inner .nav li a {
@@ -39,13 +40,30 @@ $baseFontSize: 18px;
 }
 
 .navbar-inner .nav li a:hover {
-  color: #4099ff;
+  color: #3088ff;
   background-color: #fcc;
 }
 
-.navbar-inner a.brand:hover {
-  color: #4099ff;
-  background-color: #fcc;
+.my-header {
+    padding: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.my-header h3 {
+  margin: 5px 0 0 5px;
+  float: left;
+}
+
+.my-header ul {
+  margin: 13px 0 0 0;
+  float: right;
+}
+
+.my-header li {
+  list-style: none;
+  display: inline;
+  margin-right: 5px;
 }
 
 .quiet {
@@ -54,9 +72,38 @@ $baseFontSize: 18px;
 
 .post-header a {
   display: block;
-  width: 7%;
   padding-left: 3px;
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.post-header ul {
+  margin: 0;
+}
+
+.post-header li {
+  list-style: none; 
+  display: inline;
+}
+
+.post-header li a {
+  display: inline;
+}
+
+.no-hover:hover {
+  text-decoration: none;
+}
+
+.post-header img {
+  padding-left: 7px;
+  padding-bottom: 4px;
+}
+
+.post-header h4 small {
+  font-size: 0.5em;
+}
+
+.post-header small {
+  font-size: 0.9em;
 }
 
 .comments-list .text-info {
@@ -75,6 +122,8 @@ form a {
   display:block;
   color: red;
 }
+
+
 
 
 
