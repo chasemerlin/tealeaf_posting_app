@@ -10,7 +10,9 @@
 <% @post.comments.each do |comment| %>
 	<div class="well comments-list">		
 			<p>
-				<small><%= comment.body %></small>
+				<small>
+					<%= comment.body %><span class="quiet"> by </span><span class="text-info"><%= comment.user.name %></span>
+				</small>
 				<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
 				<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
 			</p>
