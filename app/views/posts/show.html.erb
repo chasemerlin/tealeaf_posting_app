@@ -8,18 +8,19 @@
 		<%= link_to "#{@post.url}", "http://#{@post.url}" %>
 </div>
 <% @post.comments.each do |comment| %>
-	<div class="well">		
-			<p class="comments-list">
+	<div class="well comments-list">		
+			<p>
 				<small><%= comment.body %></small>
 				<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
 				<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
 			</p>
 	</div>
 <% end %>
-
-<%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal" do %>
-	<%= label_tag(:body, "Comment") %>
-	<%= text_area_tag(:body) %>
-	<%= submit_tag("New Comment", class:"btn btn-primary") %>
+<% if logged_in? %>
+	<%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal" do %>
+		<%= label_tag(:body, "Comment") %>
+		<%= text_area_tag(:body) %>
+		<%= submit_tag("New Comment", class:"btn btn-primary") %>
+	<% end %>
 <% end %>
 

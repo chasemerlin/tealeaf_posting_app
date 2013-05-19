@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  before_filter :require_user, only: [:new, :create, :edit, :update]
+
   def index
-  	@posts = Post.all
+    @posts = Post.all
   end
 
   def show
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(params[:post])
-  	@post.user_id = 1
+  	@post.user_id = current_user.id
   	if @post.save
   		flash[:notice] = "Post was created!"
   		redirect_to post_path(@post)

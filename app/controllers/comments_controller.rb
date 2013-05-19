@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_filter :require_user
+
 	def index
 		@comments = Comment.where("post_id = ?", params[:post_id])
 	end
@@ -8,7 +10,7 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = Comment.new(post_id: params[:post_id], body: params[:body])
+		@comment = Comment.new(post_id: params[:post_id], body: params[:body], user_id: current_user.id)
 		if @comment.save
 			flash[:notice] = "Added a New Comment!"
 			redirect_to posts_path

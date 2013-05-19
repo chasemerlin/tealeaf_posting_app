@@ -1,0 +1,17 @@
+
+
+<h4 class="page-header">Login</h4>
+<%= form_tag '/login' do %>
+	<%= label_tag :name %>
+	<%= text_field_tag :name %>
+	<%= label_tag :password %>
+	<%= password_field_tag :password %>
+	<br/>
+	<%= submit_tag "Login", class: "btn btn-primary" %>
+<% end %>
+<hr>
+<div class="register-offset">
+	<h6>Don't have an account yet?</h6>
+ 	<%= link_to "Register", new_user_path, class: "btn" %>
+</div>
+
