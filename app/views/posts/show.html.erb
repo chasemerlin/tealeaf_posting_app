@@ -7,7 +7,7 @@
 		<h4>
 			<span class="title"><%= @post.title %></span>
 			<small class="quiet"> by </small>
-			<span class="text-info"><%= @post.user.name %></span>
+			<span class="text-info"><%= @post.user.name %><%= image_tag avatar_url_small(@post.user) %></span>
 			<small class="quiet"><%= time_ago_in_words(@post.created_at) %> ago</small>
 		</h4>
 		<p class="quiet"><%= @post.description %></p>
@@ -17,10 +17,15 @@
 	<div class="well comments-list">		
 			<p>
 				<small>
-					<%= comment.body %><span class="quiet"> by </span><span class="text-info"><%= comment.user.name %></span>
+					<%= comment.body %>
+					<span class="quiet"> by </span>
+					<span class="text-info"><%= comment.user.name %></span>
+					<small class="quiet"><%= time_ago_in_words(@post.created_at) %> ago </small>
 				</small>
-				<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
-				<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
+				<% if comment.user == current_user %>
+					<%= link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-mini btn-warning hiding" %>
+					<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
+				<% end %>
 			</p>
 	</div>
 <% end %>

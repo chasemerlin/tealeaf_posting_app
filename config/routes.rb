@@ -4,6 +4,7 @@ Postit::Application.routes.draw do
   end
 
   resources :users
+  resources :categories
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

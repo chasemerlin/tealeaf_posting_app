@@ -66,6 +66,10 @@ $baseFontSize: 18px;
   margin-right: 5px;
 }
 
+.my-header li a:visited {
+  color: white;
+}
+
 .quiet {
   color: #ababab;
 }
@@ -73,7 +77,7 @@ $baseFontSize: 18px;
 .post-header a {
   display: block;
   padding-left: 3px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .post-header ul {
@@ -91,6 +95,8 @@ $baseFontSize: 18px;
 
 .no-hover:hover {
   text-decoration: none;
+  background-color: whitesmoke;
+  color: #ababab;
 }
 
 .post-header img {
