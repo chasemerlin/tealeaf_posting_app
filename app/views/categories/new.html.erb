@@ -1,0 +1,7 @@
+<h4 class="page-header">New Category</h4>
+<%= form_for @category do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br/>
+	<%= f.submit class: "btn btn-primary" %>
+<% end %>

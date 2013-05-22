@@ -23,5 +23,12 @@
 		<p class="quiet"><%= post.description %></p>
 		<%= link_to "#{post.url}", "http://#{post.url}", class: "no-hover" %>
 		<small><%= link_to "#{post.comments.count} comments", post_path(post), class: "no-hover" %></small>
+	<% if current_user == post.user %>
+		<p class="post-edit-delete">
+			<small><%= link_to 'Edit', edit_post_path(post) %></small>
+			<small> | </small>
+			<small><%= link_to 'Delete', "/posts/#{post.id}", method: 'delete' %></small>
+		</p>
+	<% end %>
 	</div>
 <% end %>

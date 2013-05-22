@@ -16,13 +16,6 @@
 //= require bootstrap
 
 $(function(){
-	$('.new-post-button').hover(
-  		function () {
-    		$('.navbar-inner .nav li a i').addClass("icon-white");
-  		},
-  		function () {
-    		$('.navbar-inner .nav li a i').removeClass("icon-white");
- 		 }
-	);
+	
 })
 

@@ -22,6 +22,10 @@ $baseFontSize: 18px;
   
 }
 
+.navbar {
+  margin-bottom: 5px;
+}
+
 .navbar-inner {
   padding-left: 84px;
 }
@@ -39,10 +43,21 @@ $baseFontSize: 18px;
   margin-right: 3px;
 }
 
+.navbar-inner .nav li a.new-category-button i {
+  margin-right: 3px;
+  background-color: #49a549;
+}
+
 .navbar-inner .nav li a:hover {
   color: #3088ff;
-  background-color: #fcc;
+  background-color: #ccf;
 }
+
+.navbar-inner .nav li a i {
+  background-color: #88f;
+  border-radius: 5px;
+}
+
 
 .my-header {
     padding: 0;
@@ -77,7 +92,15 @@ $baseFontSize: 18px;
 .post-header a {
   display: block;
   padding-left: 3px;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.post-header .post-edit-delete {
+  float: right;
+}
+
+.post-header .post-edit-delete a {
+  display: inline;
 }
 
 .post-header ul {
@@ -127,6 +150,13 @@ $baseFontSize: 18px;
 form a {
   display:block;
   color: red;
+}
+
+.edit-profile-button {
+  margin-top: 10px;
+  &:visited { 
+    color: white;
+  }
 }
 
 

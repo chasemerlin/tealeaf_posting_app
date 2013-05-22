@@ -7,6 +7,7 @@
 	<%= f.text_area :description, :rows => "4" %>
 	<%= f.label :category %>
 	<% #Put in select %>
+	<%= f.select :category_ids, @categories.collect{|c| [c.name, c.id]}, {}, {multiple: 'multiple'}%>
 	<br/>
 	<%= f.submit class: "btn btn-primary" %>
 <% end %>
