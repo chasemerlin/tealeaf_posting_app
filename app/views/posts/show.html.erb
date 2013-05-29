@@ -1,3 +1,9 @@
+<div class="well text-center vote-box">
+		<%= link_to "Upvote", vote_post_path(@post, vote: true), method: 'post' %>
+		<%= @post.total_votes.to_s %>
+		<%= link_to "Downvote", vote_post_path(@post, vote: false), method: 'post' %>
+	</div>
+
 <div class="well post-header">
 		<ul>
 			<% @post.categories.each do |category| %>
@@ -14,7 +20,7 @@
 		<%= link_to "#{@post.url}", "http://#{@post.url}" %>
 </div>
 <% @post.comments.each do |comment| %>
-	<div class="well comments-list">		
+	<div class="well comments-list">
 			<p>
 				<small>
 					<%= comment.body %>
@@ -27,11 +33,18 @@
 					<%= link_to "Delete", "#{params[:id]}/comments/#{comment.id}", method: "delete", class: "btn btn-mini btn-danger hiding" %>
 				<% end %>
 			</p>
+			<div class="comments-vote-box">
+				<small>
+				<%= link_to "Upvote", vote_post_comment_path(comment, vote: true, comment_id: comment.id), method: 'post', remote: true %>
+				<span id="comment_<%= comment.id %>_total"><%= comment.total_votes.to_s %></span>
+				<%= link_to "Downvote", vote_post_comment_path(comment, vote: false, comment_id: comment.id), method: 'post', remote: true %>
+			    </small>
+	        </div>
 	</div>
 <% end %>
 <% if logged_in? %>
-	<%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal" do %>
-		<%= label_tag(:body, "Comment") %>
+	<%= form_tag "#{params[:id]}/comments", method: "post", class:"form-horizontal new-comment-form" do %>
+		<%= label_tag(:body, "") %>
 		<%= text_area_tag(:body) %>
 		<%= submit_tag("New Comment", class:"btn btn-primary") %>
 	<% end %>

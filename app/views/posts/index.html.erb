@@ -7,7 +7,14 @@
 	</ul>
 </div>
 
-<% @posts.each do |post| %>
+<% @posts.sort_by! {|obj| obj.total_votes }.reverse.each do |post| %>
+	
+	<div class="well text-center vote-box">
+		<%= link_to "Upvote", vote_post_path(post, vote: true), method: 'post', remote: true %>
+		<span id="post_<%= post.id %>_total"><%= post.total_votes.to_s %></span>
+		<%= link_to "Downvote", vote_post_path(post, vote: false), method: 'post', remote: true %>
+	</div>
+
 	<div class="well post-header">
 		<ul>
 			<% post.categories.each do |category| %>
@@ -21,8 +28,8 @@
 			<small class="quiet"><%= time_ago_in_words(post.created_at) %> ago </small>
 		</h4>
 		<p class="quiet"><%= post.description %></p>
-		<%= link_to "#{post.url}", "http://#{post.url}", class: "no-hover" %>
-		<small><%= link_to "#{post.comments.count} comments", post_path(post), class: "no-hover" %></small>
+		<%= link_to "#{post.url}", "http://#{post.url}", class: "url-display" %>
+		<%= link_to "#{post.comments.count} comments", post_path(post), class: "comments-display" %>
 	<% if current_user == post.user %>
 		<p class="post-edit-delete">
 			<small><%= link_to 'Edit', edit_post_path(post) %></small>
@@ -31,4 +38,5 @@
 		</p>
 	<% end %>
 	</div>
+
 <% end %>

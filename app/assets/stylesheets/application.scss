@@ -18,12 +18,18 @@ $baseFontSize: 18px;
 @import 'bootstrap';
 @import "bootstrap-responsive";
 
+
+
+#main {
+    position: relative;
+}
+
 .container {
-  
+  padding-top: 20px;
 }
 
 .navbar {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .navbar-inner {
@@ -58,7 +64,6 @@ $baseFontSize: 18px;
   border-radius: 5px;
 }
 
-
 .my-header {
     padding: 0;
     height: 50px;
@@ -68,6 +73,7 @@ $baseFontSize: 18px;
 .my-header h3 {
   margin: 5px 0 0 5px;
   float: left;
+  
 }
 
 .my-header ul {
@@ -97,6 +103,12 @@ $baseFontSize: 18px;
 
 .post-header .post-edit-delete {
   float: right;
+  margin-bottom: 0px;
+  display: none;
+}
+
+.post-header:hover .post-edit-delete {
+  display: block;
 }
 
 .post-header .post-edit-delete a {
@@ -116,10 +128,36 @@ $baseFontSize: 18px;
   display: inline;
 }
 
-.no-hover:hover {
+.comments-display {
+  background-color: #88f;
+  border-radius: 7px;
+  width: 8.1%;
+  color: white;
+  padding: 0px 6px;
+  &:visited {
+    color: white;
+  }
+}
+
+.url-display {
+
+}
+
+.comments-display:hover, .url-display:hover {
   text-decoration: none;
   background-color: whitesmoke;
   color: #ababab;
+}
+
+.vote-box {
+  width: 5%;
+  float: left;
+  clear: right;
+}
+
+.post-header {
+  width: 87%;
+  float:right;
 }
 
 .post-header img {
@@ -135,17 +173,33 @@ $baseFontSize: 18px;
   font-size: 0.9em;
 }
 
+.comments-list {
+  clear: both;
+  width: 87%;
+  float: right;
+}
+
 .comments-list .text-info {
   font-size: 1.1em;
 }
 
-.comments-list a {
+.comments-list a.btn {
   display: none;
 }
 
 .comments-list:hover a {
   display:inline;
 } 
+
+.new-comment-form {
+  clear: both;
+  margin-left: 9.45%;
+}
+
+.new-comment-form textarea {
+  width: 40%;
+  padding-bottom: 20px;
+}
 
 form a {
   display:block;
@@ -158,8 +212,6 @@ form a {
     color: white;
   }
 }
-
-
 
 
 

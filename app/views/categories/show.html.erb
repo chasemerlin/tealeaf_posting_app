@@ -1,5 +1,5 @@
 <div class="page-header my-header">
-	<h3>Posts</h3>
+	<h3><%= @category.name %> Posts</h3>
 	<ul>
 	<% Category.all.each do |category| %>
 		<li><%= link_to "#{category.name}", category_path(category), class: "btn btn-small btn-success" %></li>

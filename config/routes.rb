@@ -1,6 +1,13 @@
 Postit::Application.routes.draw do
   resources :posts do
-  	resources :comments
+  	member do
+  		post 'vote'
+  	end
+  	resources :comments do
+  		member do
+  			post 'vote'
+  		end
+  	end
   end
 
   resources :users

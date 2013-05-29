@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+	#Need before filter
+
 	def show
 		@category = Category.find(params[:id])
 	end

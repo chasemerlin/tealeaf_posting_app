@@ -39,4 +39,18 @@ class CommentsController < ApplicationController
 		@comment.delete
 		redirect_to post_path(Post.find(params[:post_id]))
 	end
+
+	def vote
+	    @comment = Comment.find(params[:comment_id])
+	    Vote.create(voteable: @comment, user: current_user, vote: params[:vote])
+	    
+	    respond_to do |format|
+	    	format.html do
+	    		redirect_to posts_path
+	    	end
+	    	format.js do
+
+	    	end
+	    end
+    end
 end

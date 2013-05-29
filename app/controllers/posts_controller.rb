@@ -45,4 +45,17 @@ class PostsController < ApplicationController
     @post.delete
     redirect_to posts_path
   end
+
+  def vote
+    @post = Post.find(params[:id])
+    Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    respond_to do |format|
+      format.html do
+        redirect_to posts_path
+      end
+      format.js do
+
+      end
+    end
+  end
 end
